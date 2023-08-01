@@ -23,7 +23,7 @@ yq -r '.[]
         | select(.name == "'${name}'")
         | [  "name=" + .name
             , "deps=\"" + if has("deps") then .deps | join(" ") else "" end + "\""
-            , "archpkg=" + .name
+            , "archpkg=" + if has("archpkg") then .archpkg else .name end
             , "defaultcmd="
         ] | join("\n")
     ' packages.yaml > tmp.src
