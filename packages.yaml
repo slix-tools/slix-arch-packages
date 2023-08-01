@@ -1,0 +1,542 @@
+- name: acl
+  deps: [glibc]
+- name: adobe-source-code-pro-fonts
+- name: adwaita-cursors
+- name: adwaita-icon-theme
+  deps: [hicolor-icon-theme, gtk-update-icon-cache, librsvg, adwaita-cursors]
+- name: alsa-lib
+  deps: [alsa-topology-conf, alsa-ucm-conf, glibc]
+- name: alsa-topology-conf
+- name: alsa-ucm-conf
+- name: aom
+  deps: [glibc, gcc-libs]
+- name: argon2
+  deps: [glibc]
+- name: atk
+  deps: [dbus, glib2, gsettings-desktop-schemas, libx11, libxml2, libxtst, systemd]
+- name: attr
+  deps: [glibc]
+- name: audit
+  deps: [glibc, krb5, libcap-ng]
+- name: avahi
+  deps: [glibc, expat, libdaemon, glib2, libcap, gdbm, dbus]
+- name: bash
+  deps: [readline, glibc, ncurses]
+  defaultcmd: bash
+- name: binutils
+  deps: [glibc, jansson, libelf, zlib, zstd]
+- name: boost-libs
+  deps: [bzip2, zlib, icu, zstd]
+- name: brotli
+  deps: [glibc]
+- name: bzip2
+  deps: [glibc, bash]
+- name: ca-certificates-mozilla
+  deps: [ca-certificates-utils]
+- name: ca-certificates
+  deps: [ca-certificates-mozilla]
+- name: ca-certificates-utils
+  deps: [bash, coreutils, findutils, p11-kit]
+- name: cairo
+  deps: [fontconfig, freetype2, glib2, libpng, libx11, libxcb, libxext, libxrender, lzo, pixman, zlib]
+- name: cantarell-fonts
+- name: cmake
+  deps: [curl, libarchive, hicolor-icon-theme, jsoncpp, libuv, rhash, make]
+- name: coreutils
+  deps: [glibc, acl, attr, gmp, libcap, openssl]
+- name: cryptsetup
+  deps: [device-mapper, openssl, popt, util-linux-libs, json-c, argon2]
+- name: curl
+  deps: [glibc, ca-certificates, brotli, krb5, libidn2, libnghttp2, libpsl, libssh2, openssl, zlib, zstd]
+- name: dav1d
+  deps: [glibc]
+- name: db5.3
+  deps: [gcc-libs, bash]
+- name: dbus-glib
+  deps: [glibc, dbus, glib2]
+- name: dbus
+  deps: [audit, expat, systemd-libs]
+- name: dconf
+  deps: [glibc, glib2]
+- name: default-cursors
+- name: desktop-file-utils
+  deps: [glibc, glib2]
+- name: device-mapper
+  deps: [glibc, systemd-libs]
+- name: duktape
+  deps: [glibc]
+- name: e2fsprogs
+  deps: [glibc, bash, util-linux-libs]
+- name: expat
+  deps: [glibc]
+- name: ffmpeg
+  deps: [glibc, alsa-lib, aom, bzip2, fontconfig, fribidi, gmp, gnutls, gsm, jack2, lame, libass, libavc1394, libbluray, libbs2b, dav1d, libdrm, freetype2, libglvnd, libiec61883, libjxl, libmfx, libmodplug, libopenmpt, libpulse, rav1e, libraw1394, librsvg, libsoxr, libssh, libtheora, libva, libvdpau, vid.stab, libvorbis, libvpx, libwebp, libx11, x264, x265, libxcb, libxext, libxml2, libxv, xvidcore, zimg, ocl-icd, opencore-amr, openjpeg2, opus, sdl2, speex, srt, svt-av1, v4l-utils, vmaf, vulkan-icd-loader, xz, zlib]
+- name: file
+  deps: [glibc, zlib, xz, bzip2, libseccomp, zstd]
+- name: filesystem
+  deps: [iana-etc]
+- name: findutils
+  deps: [glibc, bash]
+- name: firefox
+  defaultcmd: firefox
+  deps: [glibc, dbus-glib, ffmpeg, gtk3, libpulse, libxt, mime-types, nss, gnu-free-fonts, sed, bash, util-linux, coreutils]
+  extraSteps: |
+    cp --remove-destination data/firefox/firefox ${name}/rootfs/usr/bin/firefox
+- name: flac
+  deps: [glibc, gcc-libs, libogg]
+- name: fmt
+  deps: [gcc-libs]
+- name: fontconfig
+  deps: [expat, freetype2]
+- name: freetype2
+  deps: [brotli, bzip2, harfbuzz, libpng, bash, zlib]
+- name: fribidi
+  deps: [glibc]
+- name: fuse2
+  deps: [glibc, fuse-common]
+- name: fuse3
+  deps: [fuse-common, glibc]
+- name: fuse-common
+- name: gawk
+  deps: [bash, glibc, mpfr]
+- name: gcc13
+  archpkg: gcc
+  deps: [glibc, gcc-libs, binutils, libmpc, zstd, libisl]
+  extraSteps: |
+    cp -a --remove-destination data/gcc/gcc ${name}/rootfs/usr/bin/gcc
+    cp -a --remove-destination data/gcc/g++ ${name}/rootfs/usr/bin/g++
+- name: gcc-libs
+  deps: [glibc]
+- name: gc
+  deps: [glibc, gcc-libs]
+- name: gdb-common
+  deps: [glibc, python, guile]
+- name: gdbm
+  deps: [glibc, bash, readline]
+- name: gdb
+  deps: [glibc, ncurses, gcc-libs, expat, xz, mpfr, source-highlight, gdb-common, readline, guile, python, libelf]
+- name: gdk-pixbuf2
+  deps: [glibc, glib2, libpng, libtiff, libjpeg, shared-mime-info]
+- name: giflib
+  deps: [glibc]
+- name: git
+  deps: [glibc, curl, expat, perl, perl-error, perl-mailtools, openssl, pcre2, grep, shadow, zlib]
+- name: glib2
+  deps: [glibc, libffi, libsysprof-capture, pcre2, util-linux-libs, zlib]
+- name: glibc
+  deps: [slix-ld]
+  extraSteps: |
+    rm -r ${name}/rootfs/etc
+    rm -r ${name}/rootfs/var
+- name: glib-networking
+  deps: [glib2, gnutls, gsettings-desktop-schemas, libproxy]
+- name: gmp
+  deps: [gcc-libs, bash]
+- name: gnu-free-fonts
+- name: gnutls
+  deps: [glibc, gcc-libs, libtasn1, readline, zlib, nettle, p11-kit, libidn2, zstd, libunistring, brotli]
+- name: gperftools
+  deps: [perl, libunwind]
+- name: gpm
+  deps: [glibc, bash, procps-ng]
+- name: graphite
+  deps: [glibc, gcc-libs]
+- name: grep
+  deps: [glibc, pcre2]
+- name: gsettings-desktop-schemas
+  deps: [adobe-source-code-pro-fonts, cantarell-fonts, dconf, glib2]
+- name: gsm
+  deps: [glibc]
+- name: gtk3
+  deps: [glibc, adwaita-icon-theme, atk, cairo, cantarell-fonts, dconf, desktop-file-utils, fontconfig, fribidi, gdk-pixbuf2, glib2, harfbuzz, iso-codes, libcloudproviders, libcolord, libcups, libegl, libepoxy, libglvnd, librsvg, libxcomposite, libx11, libxcursor, libxdamage, libxext, libxfixes, libxi, libxinerama, libxkbcommon, libxrandr, libxrender, pango, shared-mime-info, tracker3, wayland, gtk-update-icon-cache]
+- name: gtk-update-icon-cache
+  deps: [glibc, gdk-pixbuf2, librsvg, hicolor-icon-theme]
+- name: guile
+  deps: [glibc, gmp, ncurses, libunistring, gc, libffi, libxcrypt]
+- name: harfbuzz
+# Broken, actually also depends on freefont2
+  deps: [glib2]
+- name: hicolor-icon-theme
+- name: hidapi
+  deps: [libusb, systemd-libs]
+- name: highway
+  deps: [gcc-libs]
+- name: hwdata
+- name: iana-etc
+- name: icu
+  deps: [glibc, gcc-libs, bash]
+- name: imath
+  deps: [gcc-libs]
+- name: iptables
+  deps: [glibc, libnftnl, libpcap, libnfnetlink, libnetfilter_conntrack, bash]
+- name: iso-codes
+- name: jack2
+  deps: [glibc, alsa-lib, db5.3, dbus, gcc-libs, glibc, libsamplerate, opus, systemd-libs]
+- name: jansson
+  deps: [glibc]
+- name: jsoncpp
+  deps: [glibc, gcc-libs]
+- name: json-c
+  deps: [glibc]
+- name: json-glib
+  deps: [glibc, glib2]
+- name: kbd
+  deps: [glibc, pam]
+- name: keyutils
+  deps: [glibc, bash]
+- name: kmod
+  deps: [glibc, zlib, openssl, xz, zstd]
+- name: krb5
+  deps: [glibc, e2fsprogs, libldap, keyutils, libverto]
+- name: lame
+  deps: [glibc, ncurses]
+- name: lcms2
+  deps: [glibc, libtiff]
+- name: libarchive
+  deps: [glibc, acl, bzip2, expat, lz4, openssl, xz, zlib, zstd]
+- name: libass
+  deps: [fontconfig, fribidi, glib2, glibc, harfbuzz, freetype2]
+- name: libasyncns
+  deps: [glibc]
+- name: libavc1394
+  deps: [glibc, libraw1394]
+- name: libbluray
+  deps: [glibc, fontconfig, freetype2, libxml2]
+- name: libbs2b
+  deps: [glibc, libsndfile, gcc-libs]
+- name: libcap-ng
+  deps: [glibc]
+- name: libcap
+  deps: [gcc-libs, glibc, pam]
+- name: libcloudproviders
+  deps: [glib2]
+- name: libcolord
+  deps: [glib2, lcms2, systemd]
+- name: libcups
+  deps: [gnutls, avahi]
+- name: libdaemon
+- name: libdatrie
+  deps: [glibc]
+- name: libdrm
+  deps: [glibc, libpciaccess]
+- name: libedit
+  deps: [glibc, ncurses]
+- name: libegl
+  deps: [libxext, mesa]
+- name: libelf
+  deps: [bzip2, curl, gcc-libs, glibc, xz, zlib, zstd]
+- name: libepoxy
+  deps: [glibc, libglvnd, libx11]
+- name: libevent
+  deps: [openssl]
+- name: libffi
+  deps: [glibc]
+- name: libgcrypt
+  deps: [glibc, libgpg-error]
+- name: libglvnd
+  deps: [libxext, mesa]
+- name: libgpg-error
+  deps: [glibc, bash]
+- name: libice
+  deps: [glibc, xorgproto]
+- name: libidn2
+  deps: [glibc, libunistring]
+- name: libiec61883
+  deps: [glibc, libraw1394]
+- name: libisl
+  deps: [gmp]
+- name: libjpeg
+  deps: [glibc]
+- name: libjpeg-turbo
+  deps: [glibc]
+- name: libjxl
+  deps: [glibc, brotli, giflib, gperftools, highway, libjpeg-turbo, libpng, openexr]
+- name: libldap
+  deps: [libsasl]
+- name: libmfx
+  deps: [gcc-libs]
+- name: libmnl
+  deps: [glibc]
+- name: libmodplug
+  deps: [gcc-libs]
+- name: libmpc
+  deps: [mpfr]
+- name: libnetfilter_conntrack
+  deps: [libnfnetlink, libmnl]
+- name: libnfnetlink
+  deps: [glibc]
+- name: libnftnl
+  deps: [libmnl]
+- name: libnghttp2
+  deps: [glibc]
+- name: libnl
+  deps: [glibc, gcc-libs]
+- name: libnsl
+  deps: [glibc, libtirpc]
+- name: libogg
+  deps: [glibc]
+- name: libomxil-bellagio
+  deps: [glibc]
+- name: libopenmpt
+  deps: [flac, gcc-libs, glibc, libogg, libpulse, libsndfile, libvorbis, mpg123, portaudio, zlib]
+- name: libp11-kit
+  deps: [glibc, libtasn1, libffi]
+- name: libpcap
+  deps: [glibc, libnl, bash]
+- name: libpciaccess
+  deps: [glibc, zlib]
+- name: libpng
+  deps: [glibc, zlib, bash]
+- name: libproxy
+  deps: [glibc, dbus, duktape, gcc-libs, glib2, zlib]
+- name: libpsl
+  deps: [glibc, libidn2, libunistring]
+- name: libpulse
+  deps: [glibc, dbus, libasyncns, libsndfile, libxcb, systemd]
+- name: libraw1394
+  deps: [glibc]
+- name: librsvg
+  deps: [glibc, alsa-lib, aom, bzip2, fontconfig, fribidi, gmp, gnutls, gsm, jack2, lame, libass, libavc1394, libbluray, libbs2b, dav1d, libdrm, freetype2, libglvnd, libiec61883, libjxl, libmfx, libmodplug, libopenmpt, libpulse, rav1e, libraw1394, libsoxr, libssh, libtheora, libva, libvdpau, vid.stab, libvorbis, libvpx, libwebp, libx11, x264, x265, libxcb, libxext, libxml2, libxv, xvidcore, zimg, ocl-icd, opencore-amr, openjpeg2, opus, sdl2, speex, srt, svt-av1, v4l-utils, vmaf, vulkan-icd-loader, xz, zlib]
+- name: libsamplerate
+  deps: [glibc]
+- name: libsasl
+  deps: [gdbm, glibc, openssl]
+- name: libseccomp
+  deps: [glibc]
+- name: libsm
+  deps: [libice, util-linux-libs]
+- name: libsndfile
+  deps: [glibc, flac, lame, libogg, libvorbis, mpg123, opus]
+- name: libsoup3
+  deps: [brotli, glib-networking, glib2, krb5, libnghttp2, libpsl, libsysprof-capture, sqlite]
+- name: libsoxr
+  deps: [gcc-libs]
+- name: libssh2
+  deps: [openssl, zlib]
+- name: libssh
+  deps: [zlib, openssl]
+- name: libstemmer
+  deps: [glibc]
+- name: libsysprof-capture
+- name: libtasn1
+  deps: [glibc]
+- name: libthai
+  deps: [libdatrie]
+- name: libtheora
+  deps: [libogg]
+- name: libtiff
+  deps: [glibc, libjpeg-turbo, zlib, xz, zstd]
+- name: libtirpc
+  deps: [glibc, krb5]
+- name: libunistring
+  deps: [glibc]
+- name: libunwind
+  deps: [xz, zlib]
+- name: libusb
+  deps: [glibc, systemd-libs]
+- name: libutempter
+  deps: [glibc]
+- name: libuv
+  deps: [glibc, libnsl]
+- name: libva
+  deps: [libdrm, libglvnd, libx11, libxext, libxfixes, wayland]
+- name: libvdpau
+  deps: [libxext]
+- name: libverto
+  deps: [glibc, libevent]
+- name: libvorbis
+  deps: [libogg]
+- name: libvpx
+  deps: [glibc, gcc-libs]
+- name: libwebp
+  deps: [glibc, giflib, libjpeg, libpng, libtiff]
+- name: libx11
+  deps: [libxcb, xorgproto]
+- name: libxau
+  deps: [glibc, xorgproto]
+- name: libxcb
+  deps: [xcb-proto, libxdmcp, libxau]
+- name: libxcomposite
+  deps: [libxfixes]
+- name: libxcrypt
+  deps: [glibc]
+- name: libxcursor
+  deps: [libxfixes, libxrender, default-cursors]
+- name: libxdamage
+  deps: [libxfixes]
+- name: libxdmcp
+  deps: [glibc, xorgproto]
+- name: libxext
+  deps: [libx11]
+- name: libxfixes
+  deps: [libx11]
+- name: libxft
+  deps: [fontconfig, libxrender]
+- name: libxinerama
+- name: libxi
+  deps: [libxext, libxfixes]
+- name: libxkbcommon
+  deps: [glibc, libxml2, xkeyboard-config]
+- name: libxml2
+  deps: [glibc, icu, ncurses, readline, xz, zlib]
+- name: libxmu
+  deps: [glibc, libxext, libxt]
+- name: libxrandr
+  deps: [libxext, libxrender]
+- name: libxrender
+  deps: [libx11]
+- name: libxshmfence
+  deps: [glibc]
+- name: libxt
+  deps: [libsm, libx11]
+- name: libxtst
+  deps: [libxext, libxi, libxfixes]
+- name: libxv
+  deps: [libxext]
+- name: libxxf86vm
+  deps: [libxext]
+- name: linux-api-headers
+- name: llvm-libs
+  deps: [gcc-libs, zlib, zstd, libffi, libedit, ncurses, libxml2]
+- name: lm_sensors
+  deps: [glibc]
+- name: l-smash
+  deps: [glibc]
+- name: lz4
+  deps: [glibc]
+- name: lzo
+  deps: [glibc]
+- name: make
+  deps: [glibc, guile]
+- name: mesa
+  deps: [libdrm, libelf, libunwind, libxdamage, libxshmfence, libxxf86vm, llvm-libs, lm_sensors, vulkan-icd-loader, wayland, zstd, libomxil-bellagio]
+- name: mime-types
+- name: mpfr
+  deps: [glibc, gmp]
+- name: mpg123
+  deps: [glibc, alsa-lib]
+- name: ncurses
+  deps: [glibc, gcc-libs]
+- name: nettle
+  deps: [glibc, gmp]
+- name: nspr
+  deps: [glibc, bash]
+- name: nss
+  deps: [glibc, nspr, p11-kit, bash, sqlite, zlib]
+- name: ocl-icd
+  deps: [glibc]
+- name: opencore-amr
+  deps: [glibc]
+- name: openexr
+  deps: [glibc, zlib, imath]
+- name: openjpeg2
+  deps: [glibc, zlib, libpng, libtiff, lcms2]
+- name: openssl
+  deps: [glibc]
+- name: opus
+  deps: [glibc]
+- name: p11-kit
+  deps: [glibc, libp11-kit, coreutils, systemd-libs]
+- name: pam
+  deps: [glibc]
+- name: pango
+  deps: [glibc, cairo, fribidi, harfbuzz, libthai, libxft]
+- name: pcre2
+  deps: [glibc, readline, zlib, bzip2, bash]
+- name: pcre
+  deps: [glibc, gcc-libs, readline, zlib, bzip2, bash]
+- name: perl-error
+  deps: [perl]
+- name: perl-mailtools
+  deps: [glibc, perl-timedate]
+- name: perl
+  deps: [gdbm, db5.3, glibc, libxcrypt]
+- name: perl-timedate
+  deps: [perl]
+- name: pixman
+  deps: [glibc]
+- name: popt
+  deps: [glibc]
+- name: portaudio
+  deps: [gcc-libs, glibc, alsa-lib, jack2]
+- name: procps-ng
+  deps: [glibc, ncurses, systemd-libs]
+- name: python
+  deps: [glibc, bzip2, expat, gdbm, libffi, libnsl, libxcrypt, openssl, zlib]
+- name: rav1e
+  deps: [gcc-libs, glibc]
+- name: readline
+  deps: [glibc, ncurses]
+- name: rhash
+  deps: [glibc]
+- name: sdl2
+  deps: [glibc, libxext, libxrender, libx11, libglvnd, libxcursor, hidapi, libusb]
+- name: sed
+  deps: [glibc, acl]
+- name: shadow
+  deps: [acl, attr, audit, glibc, libxcrypt, pam]
+- name: shared-mime-info
+  deps: [glibc, libxml2, glib2]
+- name: source-highlight
+  deps: [glibc, bash, boost-libs]
+- name: speexdsp
+  deps: [gcc-libs]
+- name: speex
+  deps: [glibc, gcc-libs, libogg, speexdsp]
+- name: sqlite
+  deps: [glibc, readline, zlib]
+- name: srt
+  deps: [glibc, openssl]
+- name: svt-av1
+  deps: [glibc]
+- name: systemd-libs
+  deps: [glibc, gcc-libs, libcap, libgcrypt, lz4, xz, zstd]
+- name: systemd
+  deps: [glibc, acl, bash, cryptsetup, dbus, iptables, kbd, kmod, hwdata, libcap, libgcrypt, libxcrypt, systemd-libs, libidn2, lz4, pam, libelf, libseccomp, util-linux, xz, pcre2, audit, openssl]
+- name: tmux
+  deps: [glibc, ncurses, libevent, libutempter, systemd-libs]
+- name: tracker3
+  deps: [glibc, glib2, icu, json-glib, libsoup3, libstemmer, libxml2, sqlite]
+- name: tzdata
+  deps: [glibc]
+- name: util-linux-libs
+  deps: [glibc]
+- name: util-linux
+  deps: [glibc, pam, shadow, coreutils, systemd-libs, libcap-ng, libxcrypt, util-linux-libs, file, ncurses]
+- name: v4l-utils
+  deps: [glibc, hicolor-icon-theme, gcc-libs, libjpeg-turbo, systemd-libs, json-c]
+- name: vid.stab
+  deps: [gcc-libs, glibc]
+- name: vim-runtime
+  deps: [glibc]
+- name: vim
+  deps: [vim-runtime, gpm, acl, glibc, libgcrypt, zlib, perl]
+- name: vmaf
+  deps: [glibc, gcc-libs]
+- name: vulkan-icd-loader
+  deps: [glibc]
+- name: wayland
+  deps: [glibc, libffi, expat, libxml2, default-cursors]
+- name: x264
+  deps: [glibc, l-smash]
+- name: x265
+  deps: [glibc, gcc-libs]
+- name: xcb-proto
+- name: xkeyboard-config
+- name: xorgproto
+- name: xorg-xeyes
+  deps: [glibc, libx11, libxt, libxext, libxmu, libxrender, libxi]
+- name: xvidcore
+  deps: [glibc]
+- name: xz
+  deps: [glibc, bash]
+- name: zimg
+  deps: [gcc-libs, glibc]
+- name: zlib
+  deps: [glibc]
+- name: zsh-completions
+  deps: [zsh]
+- name: zsh
+  deps: [glibc, pcre, gdbm]
+- name: zstd
+  deps: [glibc, gcc-libs, zlib, xz, lz4]
