@@ -7,18 +7,18 @@ if [ -z "${SLIX_INDEX}" ]; then
     exit 1;
 fi
 
+if [ "${1:-}" == "--clean" ]; then
+    shift;
+    rm -f allreadyBuild.txt
+fi
+
 name=${1}
 shift
 
-if [ "${1:-}" == "--clean" ]; then
-    shift;
-    rm allreadyBuild.txt
-fi
 
 if [ $# -gt 0 ]; then
-    echo ./build.sh ${@}
+    ./build.sh ${@}
 fi
-exit
 
 if [ -e "allreadyBuild.txt" ] && [ $(cat allreadyBuild.txt | grep "^${name}$" | wc -l) -gt 0 ]; then
     exit 0
