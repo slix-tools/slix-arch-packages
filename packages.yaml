@@ -12,8 +12,8 @@
   deps: [glibc, gcc-libs]
 - name: argon2
   deps: [glibc]
-- name: atk
-  deps: [dbus, glib2, gsettings-desktop-schemas, libx11, libxml2, libxtst, systemd]
+- name: at-spi2-core
+  deps: [dbus, glib2, gsettings-desktop-schemas, libx11, libxml2, libxtst, systemd, xorg-xprop]
 - name: attr
   deps: [glibc]
 - name: audit
@@ -79,7 +79,7 @@
   deps: [glibc, bash]
 - name: firefox
   defaultcmd: firefox
-  deps: [glibc, dbus-glib, ffmpeg, gtk3, libpulse, libxt, mime-types, nss, gnu-free-fonts, sed, bash, util-linux, coreutils]
+  deps: [glibc, dbus-glib, ffmpeg, gtk3, libpulse, libxt, mailcap, nss, gnu-free-fonts, sed, bash, util-linux, coreutils]
   extraSteps: |
     cp --remove-destination data/firefox/firefox ${name}/rootfs/usr/bin/firefox
 - name: flac
@@ -116,7 +116,7 @@
 - name: gdb
   deps: [glibc, ncurses, gcc-libs, expat, xz, mpfr, source-highlight, gdb-common, readline, guile, python, libelf]
 - name: gdk-pixbuf2
-  deps: [glibc, glib2, libpng, libtiff, libjpeg, shared-mime-info]
+  deps: [glibc, glib2, libpng, libtiff, libjpeg-turbo, shared-mime-info]
 - name: gettext
   deps: [gcc-libs, acl, bash, libunistring, libxml2]
 - name: giflib
@@ -154,7 +154,7 @@
 - name: gsm
   deps: [glibc]
 - name: gtk3
-  deps: [glibc, adwaita-icon-theme, atk, cairo, cantarell-fonts, dconf, desktop-file-utils, fontconfig, fribidi, gdk-pixbuf2, glib2, harfbuzz, iso-codes, libcloudproviders, libcolord, libcups, libegl, libepoxy, libglvnd, librsvg, libxcomposite, libx11, libxcursor, libxdamage, libxext, libxfixes, libxi, libxinerama, libxkbcommon, libxrandr, libxrender, pango, shared-mime-info, tracker3, wayland, gtk-update-icon-cache]
+  deps: [glibc, adwaita-icon-theme, at-spi2-core, cairo, cantarell-fonts, dconf, desktop-file-utils, fontconfig, fribidi, gdk-pixbuf2, glib2, harfbuzz, iso-codes, libcloudproviders, libcolord, libcups, libepoxy, libglvnd, librsvg, libxcomposite, libx11, libxcursor, libxdamage, libxext, libxfixes, libxi, libxinerama, libxkbcommon, libxrandr, libxrender, pango, shared-mime-info, tracker3, wayland, gtk-update-icon-cache]
 - name: gtk-update-icon-cache
   deps: [glibc, gdk-pixbuf2, librsvg, hicolor-icon-theme]
 - name: guile
@@ -229,8 +229,6 @@
   deps: [glibc, libpciaccess]
 - name: libedit
   deps: [glibc, ncurses]
-- name: libegl
-  deps: [libxext, mesa]
 - name: libelf
   deps: [bzip2, curl, gcc-libs, glibc, xz, zlib, zstd]
 - name: libepoxy
@@ -253,8 +251,6 @@
   deps: [glibc, libraw1394]
 - name: libisl
   deps: [gmp]
-- name: libjpeg
-  deps: [glibc]
 - name: libjpeg-turbo
   deps: [glibc]
 - name: libjxl
@@ -360,7 +356,7 @@
 - name: libvpx
   deps: [glibc, gcc-libs]
 - name: libwebp
-  deps: [glibc, giflib, libjpeg, libpng, libtiff]
+  deps: [glibc, giflib, libjpeg-turbo, libpng, libtiff]
 - name: libx11
   deps: [libxcb, xorgproto]
 - name: libxau
@@ -417,11 +413,11 @@
   deps: [glibc]
 - name: lzo
   deps: [glibc]
+- name: mailcap
 - name: make
   deps: [glibc, guile]
 - name: mesa
   deps: [libdrm, libelf, libunwind, libxdamage, libxshmfence, libxxf86vm, llvm-libs, lm_sensors, vulkan-icd-loader, wayland, zstd, libomxil-bellagio]
-- name: mime-types
 - name: mpfr
   deps: [glibc, gmp]
 - name: mpg123
@@ -544,6 +540,8 @@
 - name: xorgproto
 - name: xorg-xeyes
   deps: [glibc, libx11, libxt, libxext, libxmu, libxrender, libxi]
+- name: xorg-xprop
+  deps: [libx11]
 - name: xvidcore
   deps: [glibc]
 - name: xz
