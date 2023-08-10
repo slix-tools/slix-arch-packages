@@ -35,6 +35,8 @@ yq -r '.[]
 source tmp.src
 rm tmp.src
 
+description=$(pacman -Si "${archpkg}" | grep "Description" | cut -d ':' -f 2- | cut -b 2-)
+
 ./preparePackage.sh ${name} ${archpkg} "${deps}"
 
 yq -r '.[]
@@ -44,4 +46,4 @@ yq -r '.[]
 . ./tmp_extraSteps.src
 rm tmp_extraSteps.src
 
-./finalizePackage.sh ${name} ${archpkg} "${defaultcmd}"
+./finalizePackage.sh ${name} ${archpkg} "${defaultcmd}" "${description}"

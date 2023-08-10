@@ -11,6 +11,9 @@ shift
 defaultcmd=${1}
 shift
 
+description=${1}
+shift
+
 if [ -z "${SLIX_INDEX}" ]; then
     echo "Set SLIX_INDEX to path of index.db"
     exit 1;
@@ -37,7 +40,7 @@ if [ $(cat ${target}/dependencies.txt | grep Missing.gar | wc -l) -ge 1 ]; then
     cat ${target}/dependencies.txt | grep Missing.gar
     rm ${target}.gar
 else
-    slix index add ${SLIX_INDEX} --package ${target}.gar --name "${target}" --version "${version}"
+    slix index add ${SLIX_INDEX} --package ${target}.gar --name "${target}" --version "${version}" --description "${description}"
     rm ${target}.gar
 fi
 echo ${name} >> allreadyBuild.txt
