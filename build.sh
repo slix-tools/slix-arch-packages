@@ -29,7 +29,7 @@ yq -r '.[]
         | [  "name=" + .name
             , "deps=\"" + if has("deps") then .deps | join(" ") else "" end + "\""
             , "archpkg=" + if has("archpkg") then .archpkg else .name end
-            , "defaultcmd="
+            , "defaultcmd=\"" + if has("defaultcmd") then .defaultcmd else "" end +"\""
         ] | join("\n")
     ' packages.yaml > tmp.src
 source tmp.src
