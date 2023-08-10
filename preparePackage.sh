@@ -74,7 +74,7 @@ pacman -Ql ${archpkg} | awk '{ print $2; }' | (
                 l=$(readlink ${root}/${line:1})
                 if [ ${l:0:1} == "/" ]; then
                     l=${l:1}
-                    echo ${root}/${l} to ${root}/${line:1}
+                    echo linking ${root}/${l} to ${root}/${line:1}
                     ln -rsf ${root}/${l} ${root}/${line:1}
                 fi
             fi
@@ -102,6 +102,8 @@ pacman -Ql ${archpkg} | awk '{ print $2; }' | (
                         || [ "${inter}" == "#!/bin/sh -" ]; then
                         sed -i '1s#.*#\#!/usr/bin/env sh#' ${root}/${line:1}
                     elif [ "${inter}" == "#!/bin/bash" ]; then
+                        sed -i '1s#.*#\#!/usr/bin/env bash#' ${root}/${line:1}
+                    elif [ "${inter}" == "#!/usr/bin/bash" ]; then
                         sed -i '1s#.*#\#!/usr/bin/env bash#' ${root}/${line:1}
                     elif [ "${inter}" == "#!/bin/zsh" ] \
                         || [ "${inter}" == "#!/usr/local/bin/zsh" ]; then

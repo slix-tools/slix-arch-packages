@@ -117,6 +117,8 @@
   deps: [glibc, ncurses, gcc-libs, expat, xz, mpfr, source-highlight, gdb-common, readline, guile, python, libelf]
 - name: gdk-pixbuf2
   deps: [glibc, glib2, libpng, libtiff, libjpeg, shared-mime-info]
+- name: gettext
+  deps: [gcc-libs, acl, bash, libunistring, libxml2]
 - name: giflib
   deps: [glibc]
 - name: git
@@ -133,10 +135,14 @@
 - name: gmp
   deps: [gcc-libs, bash]
 - name: gnu-free-fonts
+- name: gnupg
+  deps: [bzip2, glibc, gnutls, libgcrypt, libgpg-error, libksba, libassuan, npth, pinentry, readline, sqlite, zlib]
 - name: gnutls
   deps: [glibc, gcc-libs, libtasn1, readline, zlib, nettle, p11-kit, libidn2, zstd, libunistring, brotli]
 - name: gperftools
   deps: [perl, libunwind]
+- name: gpgme
+  deps: [libgpg-error, gnupg]
 - name: gpm
   deps: [glibc, bash, procps-ng]
 - name: graphite
@@ -196,6 +202,8 @@
   deps: [glibc, acl, bzip2, expat, lz4, openssl, xz, zlib, zstd]
 - name: libass
   deps: [fontconfig, fribidi, glib2, glibc, harfbuzz, freetype2]
+- name: libassuan
+  deps: [glibc, libgpg-error, bash]
 - name: libasyncns
   deps: [glibc]
 - name: libavc1394
@@ -251,6 +259,8 @@
   deps: [glibc]
 - name: libjxl
   deps: [glibc, brotli, giflib, gperftools, highway, libjpeg-turbo, libpng, openexr]
+- name: libksba
+  deps: [bash, libgpg-error, glibc]
 - name: libldap
   deps: [libsasl]
 - name: libmfx
@@ -303,6 +313,7 @@
   deps: [gdbm, glibc, openssl]
 - name: libseccomp
   deps: [glibc]
+- name: libsecret
 - name: libsm
   deps: [libice, util-linux-libs]
 - name: libsndfile
@@ -419,6 +430,8 @@
   deps: [glibc, gcc-libs]
 - name: nettle
   deps: [glibc, gmp]
+- name: npth
+  deps: [glibc, bash]
 - name: nspr
   deps: [glibc, bash]
 - name: nss
@@ -437,6 +450,9 @@
   deps: [glibc]
 - name: p11-kit
   deps: [glibc, libp11-kit, coreutils, systemd-libs]
+- name: pacman
+  deps: [bash, glibc, libarchive, curl, gpgme, pacman-mirrorlist, gettext, gawk, coreutils, gnupg, grep]
+- name: pacman-mirrorlist
 - name: pam
   deps: [glibc]
 - name: pango
@@ -453,6 +469,8 @@
   deps: [gdbm, db5.3, glibc, libxcrypt]
 - name: perl-timedate
   deps: [perl]
+- name: pinentry
+  deps: [glibc, ncurses, libcap, libassuan, libsecret, glib2]
 - name: pixman
   deps: [glibc]
 - name: popt
