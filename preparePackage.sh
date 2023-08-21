@@ -38,19 +38,26 @@ if [ -e ${root} ]; then
 fi
 mkdir -p ${root}
 
+# prepare meta folder
+meta=${target}/meta
+if [ -e ${meta} ]; then
+    rm -rf "${meta}"
+fi
+mkdir -p ${meta}
+
 # query dependencies and create a dependency file
-echo -n "" > ${target}/dependencies_unsorted.txt
+echo -n "" > ${meta}/dependencies_unsorted.txt
 for d in $deps; do
     latest="$(slix index info ${SLIX_INDEX} --name ${d} | tail -n 1 || true)"
     if [ -z "${latest}" ]; then
         echo "$name dependency $d is missing"
         exit 1
     fi
-    echo ${latest} >> ${target}/dependencies_unsorted.txt
-    slix index info ${SLIX_INDEX} --name ${d} --dependencies >> ${target}/dependencies_unsorted.txt
+    echo ${latest} >> ${meta}/dependencies_unsorted.txt
+    slix index info ${SLIX_INDEX} --name ${d} --dependencies >> ${meta}/dependencies_unsorted.txt
 done
-cat ${target}/dependencies_unsorted.txt | sort | uniq > ${target}/dependencies.txt
-rm ${target}/dependencies_unsorted.txt
+cat ${meta}/dependencies_unsorted.txt | sort | uniq > ${meta}/dependencies.txt
+rm ${meta}/dependencies_unsorted.txt
 
 
 echo "0" > ${target}/requiresSlixLD.txt

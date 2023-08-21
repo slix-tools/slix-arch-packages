@@ -35,6 +35,7 @@ yq -r '.[]
 source tmp.src
 rm tmp.src
 
+echo $name
 description=$(pacman -Si "${archpkg}" | grep "Description" | cut -d ':' -f 2- | cut -b 2-)
 
 ./preparePackage.sh ${name} ${archpkg} "${deps}"

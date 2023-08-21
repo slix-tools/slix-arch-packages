@@ -31,18 +31,21 @@ version=$(pacman -Qi ${archpkg} \
 target=${name}
 
 if [ -n "${defaultcmd}" ]; then
-    echo "${defaultcmd}" > ${target}/defaultcmd.txt
+    echo "${defaultcmd}" > ${target}/meta/defaultcmd.txt
 fi
+echo "${name}" > ${target}/meta/name.txt
+echo "${version}" > ${target}/meta/version.txt
+echo "${description}" > ${target}/meta/description.txt
 
 slix archive --input ${target} --output ${target}.gar
-if [ $(cat ${target}/dependencies.txt | grep Missing.gar | wc -l) -ge 1 ]; then
+if [ $(cat ${target}/meta/dependencies.txt | grep Missing.gar | wc -l) -ge 1 ]; then
     echo "${target} is missing dependencies:"
-    cat ${target}/dependencies.txt | grep Missing.gar
+    cat ${target}/meta/dependencies.txt | grep Missing.gar
     rm ${target}.gar
 else
-    slix index add ${SLIX_INDEX} --package ${target}.gar --name "${target}" --version "${version}" --description "${description}"
+    slix index add ${SLIX_INDEX} --package ${target}.gar
     rm ${target}.gar
 fi
-echo ${name} >> allreadyBuild.txt
 
+echo ${name} >> allreadyBuild.txt
 rm -rf ${target}
