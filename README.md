@@ -5,8 +5,7 @@ Build container by running:
 docker build . -t slix-arch
 ```
 
-Running the container
+Running the container with stuff you want it to build for you
 ```
-mkdir -p cache
-docker run -it --rm -v $(pwd)/cache:/var/cache/pacman/pkg -e SLIX=_INDEX=/slix-index -v $(pwd)/index:/slix-index slix-arch bash
+./runInDocker.sh thunderbird firefox
 ```
