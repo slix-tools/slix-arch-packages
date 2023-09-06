@@ -2,6 +2,8 @@
 
 set -Eeuo pipefail
 
+cd "$(dirname "$(readlink -f "$0")")"
+
 if [ -z "${SLIX_INDEX}" ]; then
     echo "Set SLIX_INDEX to path of index.db"
     exit 1;
@@ -36,6 +38,9 @@ source tmp.src
 rm tmp.src
 
 echo $name
+if [ "${INSTALL_BEFORE_PACKAGING}" -eq 1 ]; then
+    pacman -S --noconfirm --needed "${archpkg}"
+fi
 description=$(pacman -Si "${archpkg}" | grep "Description" | cut -d ':' -f 2- | cut -b 2-)
 
 ./preparePackage.sh ${name} ${archpkg} "${deps}"
