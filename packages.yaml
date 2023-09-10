@@ -190,6 +190,8 @@
   deps: [glibc]
 - name: json-glib
   deps: [glibc, glib2]
+- name: jq
+  deps: [glibc, oniguruma]
 - name: kbd
   deps: [glibc, pam]
 - name: keyutils
@@ -365,6 +367,8 @@
   deps: [glibc, gcc-libs]
 - name: libwebp
   deps: [glibc, giflib, libjpeg-turbo, libpng, libtiff]
+- name: libyaml
+  deps: [glibc]
 - name: libx11
   deps: [libxcb, xorgproto]
 - name: libxau
@@ -442,6 +446,7 @@
   deps: [glibc, nspr, p11-kit, bash, sqlite, zlib]
 - name: ocl-icd
   deps: [glibc]
+- name: oniguruma
 - name: opencore-amr
   deps: [glibc]
 - name: openexr
@@ -485,6 +490,14 @@
   deps: [glibc, ncurses, systemd-libs]
 - name: python
   deps: [glibc, bzip2, expat, gdbm, libffi, libnsl, libxcrypt, openssl, zlib]
+- name: python-argcomplete
+  deps: [python]
+- name: python-tomlkit
+  deps: [python]
+- name: python-xmltodict
+  deps: [python]
+- name: python-yaml
+  deps: [python, glibc, libyaml]
 - name: rav1e
   deps: [gcc-libs, glibc]
 - name: readline
@@ -561,6 +574,8 @@
   deps: [glibc]
 - name: xz
   deps: [glibc, bash]
+- name: yq
+  deps: [jq, python-argcomplete, python-tomlkit, python-xmltodict, python-yaml]
 - name: zimg
   deps: [gcc-libs, glibc]
 - name: zlib
