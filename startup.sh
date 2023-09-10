@@ -12,5 +12,6 @@ if [ ! -e ${SLIX_INDEX} ]; then
     slix index init ${SLIX_INDEX}
     slix index add ${SLIX_INDEX} --package /code/slix-ld.gar
 fi
+pacman -Syyu --noconfirm
 export INSTALL_BEFORE_PACKAGING=1
 /code/build.sh "$@"
