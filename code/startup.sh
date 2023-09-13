@@ -2,8 +2,7 @@
 echo "Entering Docker"
 # Overwritting activate of slix-bootstrap (why is it broken?)
 . /slix-bootstrap-pkg/activate
-#eval "$(slix env --stack /code/startup.slix)"
-# ln -s slix /slix-bootstrap-pkg/rootfs/usr/bin/slix-env
+eval "$(slix env --stack /code/startup.slix)"
 
 if [ "$1" == "--bash" ]; then
     bash
