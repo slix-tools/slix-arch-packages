@@ -105,7 +105,10 @@ pacman -Ql ${archpkg} | awk '{ print $2; }' | (
                     || [ "${t}" == "text/x-script.python" ] \
                     || [ "${t}" == "text/x-perl" ]; then
                     inter=$(head -n 1 ${root}/${line:1})
-                    if [ "${inter}" == "#!/bin/sh" ] \
+                    if [ "${inter:0:15}" == "#!/usr/bin/env " ] \
+                        || [ "${inter:0:16}" == "#! /usr/bin/env " ]; then
+                        true; # nothing todo
+                    elif [ "${inter}" == "#!/bin/sh" ] \
                         || [ "${inter}" == "#! /bin/sh" ] \
                         || [ "${inter}" == "#!/bin/sh -" ]; then
                         sed -i '1s#.*#\#!/usr/bin/env sh#' ${root}/${line:1}
@@ -118,6 +121,8 @@ pacman -Ql ${archpkg} | awk '{ print $2; }' | (
                         sed -i '1s#.*#\#!/usr/bin/env zsh#' ${root}/${line:1}
                     elif [ "${inter}" == "#!/usr/bin/python" ]; then
                         sed -i '1s#.*#\#!/usr/bin/env python#' ${root}/${line:1}
+                    elif [ "${inter:0:17}" == "#!/usr/bin/python" ]; then
+                        sed -i '1s#.*#\#!/usr/bin/env '${inter:11}'#' ${root}/${line:1}
                     elif [ "${inter}" == "#! /usr/bin/perl" ] \
                         || [ "${inter}" == "#!/usr/bin/perl" ]; then
                         sed -i '1s#.*#\#!/usr/bin/env perl#' ${root}/${line:1}
