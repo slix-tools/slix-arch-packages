@@ -98,11 +98,12 @@ pacman -Ql ${archpkg} | awk '{ print $2; }' | (
                         mv ${root}/usr/bin/${file} ${root}/usr/bin/.slix-ld-${file}
                         ln -sr ${root}/usr/bin/slix-ld ${root}/usr/bin/${file}
                         echo "1" > ${target}/requiresSlixLD.txt
-
                     fi
 
                 # patch shell scripts
-                elif [ "${t}" == "text/x-shellscript" ]; then
+                elif [ "${t}" == "text/x-shellscript" ] \
+                    || [ "${t}" == "text/x-script.python" ] \
+                    || [ "${t}" == "text/x-perl" ]; then
                     inter=$(head -n 1 ${root}/${line:1})
                     if [ "${inter}" == "#!/bin/sh" ] \
                         || [ "${inter}" == "#! /bin/sh" ] \
@@ -115,9 +116,17 @@ pacman -Ql ${archpkg} | awk '{ print $2; }' | (
                     elif [ "${inter}" == "#!/bin/zsh" ] \
                         || [ "${inter}" == "#!/usr/local/bin/zsh" ]; then
                         sed -i '1s#.*#\#!/usr/bin/env zsh#' ${root}/${line:1}
+                    elif [ "${inter}" == "#!/usr/bin/python" ]; then
+                        sed -i '1s#.*#\#!/usr/bin/env python#' ${root}/${line:1}
+                    elif [ "${inter}" == "#! /usr/bin/perl" ] \
+                        || ["${inter}" == "#!/usr/bin/perl" ]; then
+                        sed -i '1s#.*#\#!/usr/bin/env perl#' ${root}/${line:1}
                     else
                         echo "${root}/${line:1} needs fixing, unexpected shell interpreter: ${inter}"
                     fi
+                elif [ "${t:0:7}" == "text/x-" ]; then
+                    inter=$(head -n 1 ${root}/${line:1})
+                    echo "${root}/${line:1} needs fixing, unknown script type ${t}, guessing interpreter to be ${inter}"
                 fi
             fi
         else

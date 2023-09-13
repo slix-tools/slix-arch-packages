@@ -38,7 +38,7 @@ source tmp.src
 rm tmp.src
 
 echo $name
-if [ "${INSTALL_BEFORE_PACKAGING}" -eq 1 ]; then
+if [ "${INSTALL_BEFORE_PACKAGING:-0}" -eq 1 ]; then
     pacman -S --noconfirm --needed "${archpkg}"
 fi
 description=$(pacman -Si "${archpkg}" | grep "Description" | cut -d ':' -f 2- | cut -b 2-)
