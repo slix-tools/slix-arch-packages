@@ -126,6 +126,12 @@ pacman -Ql ${archpkg} | awk '{ print $2; }' | (
                     elif [ "${inter}" == "#! /usr/bin/perl" ] \
                         || [ "${inter}" == "#!/usr/bin/perl" ]; then
                         sed -i '1s#.*#\#!/usr/bin/env perl#' ${root}/${line:1}
+                    elif [ "${inter}" == "#! /usr/bin/perl -w" ] \
+                        || [ "${inter}" == "#!/usr/bin/perl -w" ]; then
+                        sed -i '1s#.*#\#!/usr/bin/env -S perl -w#' ${root}/${line:1}
+                    elif [ "${inter}" == "#! /usr/bin/perl -w -s" ] \
+                        || [ "${inter}" == "#!/usr/bin/perl -w -s" ]; then
+                        sed -i '1s#.*#\#!/usr/bin/env -S perl -w -s#' ${root}/${line:1}
                     else
                         echo "${root}/${line:1} needs fixing, unexpected shell interpreter: ${inter}"
                     fi
