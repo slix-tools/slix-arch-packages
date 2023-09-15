@@ -105,9 +105,17 @@
   archpkg: gcc
   deps: [glibc, gcc-libs, binutils, libmpc, zstd, libisl]
   extraSteps: |
-    cp -a --remove-destination data/gcc/gcc ${name}/rootfs/usr/bin/gcc
-    cp -a --remove-destination data/gcc/g++ ${name}/rootfs/usr/bin/g++
+    cp -a --remove-destination data/gcc13/gcc ${name}/rootfs/usr/bin/gcc
+    cp -a --remove-destination data/gcc13/g++ ${name}/rootfs/usr/bin/g++
+- name: gcc12
+  archpkg: gcc12
+  deps: [glibc, gcc12-libs, binutils, libmpc, zstd, libisl]
+  extraSteps: |
+    cp -a --remove-destination data/gcc12/gcc ${name}/rootfs/usr/bin/gcc
+    cp -a --remove-destination data/gcc12/g++ ${name}/rootfs/usr/bin/g++
 - name: gcc-libs
+  deps: [glibc]
+- name: gcc12-libs
   deps: [glibc]
 - name: gc
   deps: [glibc, gcc-libs]
