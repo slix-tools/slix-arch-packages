@@ -536,6 +536,8 @@
   deps: [glibc, readline, zlib]
 - name: srt
   deps: [glibc, openssl]
+- name: strace
+  deps: [perl, libunwind]
 - name: sudo
   deps: [glibc, openssl, pam, libldap, zlib]
 - name: svt-av1
