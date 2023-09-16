@@ -71,6 +71,8 @@
   deps: [glibc, bash, util-linux-libs]
 - name: expat
   deps: [glibc]
+- name: fakeroot
+  deps: [glibc, filesystem, sed, util-linux, bash]
 - name: ffmpeg
   deps: [glibc, alsa-lib, aom, bzip2, fontconfig, fribidi, gmp, gnutls, gsm, jack2, lame, libass, libavc1394, libbluray, libbs2b, dav1d, libdrm, freetype2, libglvnd, libiec61883, libjxl, libmfx, libmodplug, libopenmpt, libpulse, rav1e, libraw1394, librsvg, libsoxr, libssh, libtheora, libva, libvdpau, vid.stab, libvorbis, libvpx, libwebp, libx11, x264, x265, libxcb, libxext, libxml2, libxv, xvidcore, zimg, ocl-icd, opencore-amr, openjpeg2, opus, sdl2, speex, srt, svt-av1, v4l-utils, vmaf, vulkan-icd-loader, xz, zlib]
 - name: file
@@ -149,6 +151,7 @@
   deps: [bzip2, glibc, gnutls, libgcrypt, libgpg-error, libksba, libassuan, npth, pinentry, readline, sqlite, zlib]
 - name: gnutls
   deps: [glibc, gcc-libs, libtasn1, readline, zlib, nettle, p11-kit, libidn2, zstd, libunistring, brotli]
+- name: go
 - name: gperftools
   deps: [perl, libunwind]
 - name: gpgme
@@ -531,6 +534,8 @@
   deps: [glibc, readline, zlib]
 - name: srt
   deps: [glibc, openssl]
+- name: sudo
+  deps: [glibc, openssl, pam, libldap, zlib]
 - name: svt-av1
   deps: [glibc]
 - name: systemd-libs
