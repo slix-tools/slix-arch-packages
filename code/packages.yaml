@@ -172,6 +172,8 @@
   deps: [glibc, gdk-pixbuf2, librsvg, hicolor-icon-theme]
 - name: guile
   deps: [glibc, gmp, ncurses, libunistring, gc, libffi, libxcrypt]
+- name: gzip
+  deps: [glibc, bash, coreutils, sed, grep]
 - name: harfbuzz
 # Broken, actually also depends on freefont2
   deps: [glib2]
