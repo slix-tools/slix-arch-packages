@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
-.slix-ld-g++ --sysroot ${SLIX_ROOT} "$@"
+
+SCRIPT_DIR="$(dirname "$(dirname "$(dirname "$(readlink -f "$0")")")")"
+export LD_LIBRARY_PATH=${SCRIPT_DIR}/usr/lib
+${SCRIPT_DIR}/usr/lib/ld-linux-x86-64.so.2 --argv0 g++ ${SCRIPT_DIR}/usr/bin/.slix-ld-g++ --sysroot ${SCRIPT_DIR} "$@"
