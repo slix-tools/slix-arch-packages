@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 SCRIPT_DIR="$(dirname "$(dirname "$(dirname "$(readlink -f "$0")")")")"
-export LD_LIBRARY_PATH=${SCRIPT_DIR}/usr/lib
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+"${LD_LIBRARY_PATH}:"}${SCRIPT_DIR}/usr/lib"
 ${SCRIPT_DIR}/usr/lib/ld-linux-x86-64.so.2 --argv0 gcc ${SCRIPT_DIR}/usr/bin/.slix-ld-gcc --sysroot ${SCRIPT_DIR} "$@"
