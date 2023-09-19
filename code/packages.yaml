@@ -137,6 +137,7 @@
   deps: [glibc]
 - name: git
   deps: [glibc, curl, expat, perl, perl-error, perl-mailtools, openssl, pcre2, grep, shadow, zlib]
+  comment: "uses some templates from the wrong folder"
 - name: glib2
   deps: [glibc, libffi, libsysprof-capture, pcre2, util-linux-libs, zlib]
 - name: glibc
@@ -177,8 +178,8 @@
 - name: gzip
   deps: [glibc, bash, coreutils, sed, grep]
 - name: harfbuzz
-# Broken, actually also depends on freefont2
   deps: [glib2]
+  comment: "dependencies roken, actually also depends on freefont2"
 - name: hicolor-icon-theme
 - name: hidapi
   deps: [libusb, systemd-libs]
@@ -542,6 +543,7 @@
   deps: [perl, libunwind]
 - name: sudo
   deps: [glibc, openssl, pam, libldap, zlib]
+  comment: "doesn't seem to work properly"
 - name: svt-av1
   deps: [glibc]
 - name: systemd-libs
@@ -593,6 +595,9 @@
   deps: [glibc]
 - name: xz
   deps: [glibc, bash]
+- name: yay
+  deps: [pacman]
+  packagemanager: yay
 - name: yq
   deps: [jq, python-argcomplete, python-tomlkit, python-xmltodict, python-yaml]
 - name: zimg

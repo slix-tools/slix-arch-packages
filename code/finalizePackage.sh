@@ -5,6 +5,9 @@ set -Eeuo pipefail
 name=${1}
 shift
 
+packagemanager=$"${1}"
+shift
+
 archpkg=${1}
 shift
 
@@ -23,7 +26,7 @@ if [ -e "allreadyBuild.txt" ] && [ $(cat allreadyBuild.txt | grep "^${name}$" | 
     exit 0
 fi
 
-version=$(pacman -Qi ${archpkg} \
+version=$(${packagemanager} -Qi ${archpkg} \
     | grep -P "^Version" \
     | tr '\n' ' ' \
     | awk '{print $3}')

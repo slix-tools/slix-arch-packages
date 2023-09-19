@@ -5,6 +5,9 @@ set -Eeuo pipefail
 name=${1}
 shift
 
+packagemanager="${1}"
+shift
+
 archpkg=${1}
 shift
 
@@ -61,7 +64,7 @@ rm ${meta}/dependencies_unsorted.txt
 
 
 echo "0" > ${target}/requiresSlixLD.txt
-pacman -Ql ${archpkg} | awk '{ print $2; }' | (
+${packagemanager} -Ql ${archpkg} | awk '{ print $2; }' | (
     while IFS='$' read -r line; do
         if [ -d $line ] && [ ! -h $line ]; then
             mkdir -p ${root}/${line:1}
