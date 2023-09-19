@@ -124,10 +124,18 @@
   extraSteps: |
     cp -a --remove-destination data/gcc12/gcc ${name}/rootfs/usr/bin/gcc
     cp -a --remove-destination data/gcc12/g++ ${name}/rootfs/usr/bin/g++
-- name: gcc-libs
-  deps: [glibc]
 - name: gcc12-libs
   deps: [glibc]
+- name: gcc11
+  archpkg: gcc11
+  deps: [glibc, gcc11-libs, binutils, libmpc, zstd]
+  extraSteps: |
+    cp -a --remove-destination data/gcc11/gcc ${name}/rootfs/usr/bin/gcc
+    cp -a --remove-destination data/gcc11/g++ ${name}/rootfs/usr/bin/g++
+  packagemanager: yay
+- name: gcc11-libs
+  deps: [glibc]
+  packagemanager: yay
 - name: gc
   deps: [glibc, gcc-libs]
 - name: gdb-common
