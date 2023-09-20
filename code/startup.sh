@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 echo "Entering Docker"
-
+export MAKEFLAGS="-j8"
 if [ "$1" == "--bash" ]; then
     bash
     exit

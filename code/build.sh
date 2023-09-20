@@ -42,7 +42,7 @@ if [ "${pkgname:-}" == "" ]; then
 fi
 
 if [ "${packagemanager}" == "yay" ]; then
-    packagemanager="sudo -u aur yay"
+    packagemanager="sudo -u aur --preserve-env=MAKEFLAGS yay"
 fi
 
 echo "installing/packaging: ${name}"
