@@ -466,6 +466,8 @@
   deps: [glibc, gmp]
 - name: mpg123
   deps: [glibc, alsa-lib]
+- name: nano
+  deps: [ncurses, file, bash]
 - name: ncurses
   deps: [glibc, gcc-libs]
 - name: nettle
