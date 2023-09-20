@@ -65,6 +65,8 @@
   deps: [glibc, glib2]
 - name: device-mapper
   deps: [glibc, systemd-libs]
+- name: diffutils
+  deps: [glibc, bash]
 - name: duktape
   deps: [glibc]
 - name: e2fsprogs
@@ -115,7 +117,6 @@
     mv ${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/cc1plus ${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/.slix-cc1plus
     cp -a --remove-destination data/gcc13/cc1     ${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/cc1
     cp -a --remove-destination data/gcc13/cc1plus ${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/cc1plus
-
 - name: gcc-libs
   deps: [glibc]
 - name: gcc12
