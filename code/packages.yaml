@@ -613,6 +613,8 @@
   deps: [glibc]
 - name: xz
   deps: [glibc, bash]
+- name: yaml-cpp
+  deps: [gcc-libs, glibc]
 - name: yay
   deps: [pacman]
   packagemanager: yay
