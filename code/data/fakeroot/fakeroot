@@ -1,4 +1,14 @@
 #!/bin/sh
+# SPDX-License-Identifier: GPL-3.0-only
+# SPDX-FileCopyrightText: joost witteveen
+# SPDX-FileCopyrightText: Clint Adams
+# SPDX-FileCopyrightText: Timo Savola
+# SPDX-FileCopyrightText: Regis Duchesne
+# SPDX-FileCopyrightText: Mikhail Gusarov
+# SPDX-FileCopyrightText: Manual page partly (mostly) written by JHM Dassen
+# SPDX-FileCopyrightText: Updated OS X support by Kyle J. McKay
+
+
 
 # This script first starts faked (the daemon), and then it will run
 # the requested program with fake root privileges.
