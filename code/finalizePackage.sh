@@ -24,7 +24,7 @@ if [ -z "${SLIX_INDEX}" ]; then
     exit 1;
 fi
 
-if [ -e "allreadyBuild.txt" ] && [ $(cat allreadyBuild.txt | grep "^${name}$" | wc -l) -gt 0 ]; then
+if [ -e "${HOME}/.cache/allreadyBuild.txt" ] && [ $(cat ${HOME}/.cache/allreadyBuild.txt | grep "^${name}$" | wc -l) -gt 0 ]; then
     exit 0
 fi
 
@@ -36,21 +36,21 @@ version=$(${packagemanager} -Qi ${archpkg} \
 target=${name}
 
 if [ -n "${defaultcmd}" ]; then
-    echo "${defaultcmd}" > ${target}/meta/defaultcmd.txt
+    echo "${defaultcmd}" > ${TMP}/${target}/meta/defaultcmd.txt
 fi
-echo "${name}" > ${target}/meta/name.txt
-echo "${version}" > ${target}/meta/version.txt
-echo "${description}" > ${target}/meta/description.txt
+echo "${name}" > ${TMP}/${target}/meta/name.txt
+echo "${version}" > ${TMP}/${target}/meta/version.txt
+echo "${description}" > ${TMP}/${target}/meta/description.txt
 
-slix archive --input ${target} --output ${target}.gar
-if [ $(cat ${target}/meta/dependencies.txt | grep Missing.gar | wc -l) -ge 1 ]; then
+slix archive --input ${TMP}/${target} --output ${TMP}/${target}.gar
+if [ $(cat ${TMP}/${target}/meta/dependencies.txt | grep Missing.gar | wc -l) -ge 1 ]; then
     echo "${target} is missing dependencies:"
-    cat ${target}/meta/dependencies.txt | grep Missing.gar
-    rm ${target}.gar
+    cat ${TMP}/${target}/meta/dependencies.txt | grep Missing.gar
+    rm ${TMP}/${target}.gar
 else
-    slix index add ${SLIX_INDEX} --package ${target}.gar
-    rm ${target}.gar
+    slix index add ${SLIX_INDEX} --package ${TMP}/${target}.gar
+    rm ${TMP}/${target}.gar
 fi
 
-echo ${name} >> allreadyBuild.txt
-rm -rf ${target}
+echo ${name} >> ${HOME}/.cache/allreadyBuild.txt
+rm -rf ${TMP}/${target}

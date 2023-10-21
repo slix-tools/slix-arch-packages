@@ -23,7 +23,7 @@ if [ -z "${SLIX_INDEX}" ]; then
     exit 1;
 fi
 
-if [ -e "allreadyBuild.txt" ] && [ $(cat allreadyBuild.txt | grep "^${name}$" | wc -l) -gt 0 ]; then
+if [ -e "${HOME}/.cache/allreadyBuild.txt" ] && [ $(cat ${HOME}/.cache/allreadyBuild.txt | grep "^${name}$" | wc -l) -gt 0 ]; then
     exit 0
 fi
 
@@ -37,14 +37,14 @@ for d in $deps; do
 done
 
 # prepare root folder
-root=${target}/rootfs
+root=${TMP}/${target}/rootfs
 if [ -e ${root} ]; then
     rm -rf "${root}"
 fi
 mkdir -p ${root}
 
 # prepare meta folder
-meta=${target}/meta
+meta=${TMP}/${target}/meta
 if [ -e ${meta} ]; then
     rm -rf "${meta}"
 fi
@@ -65,7 +65,7 @@ cat ${meta}/dependencies_unsorted.txt | sort | uniq > ${meta}/dependencies.txt
 rm ${meta}/dependencies_unsorted.txt
 
 
-echo "0" > ${target}/requiresSlixLD.txt
+echo "0" > ${TMP}/${target}/requiresSlixLD.txt
 ${packagemanager} -Ql ${archpkg} | awk '{ print $2; }' | (
     while IFS='$' read -r line; do
         if [ -d $line ] && [ ! -h $line ]; then
@@ -102,7 +102,7 @@ ${packagemanager} -Ql ${archpkg} | awk '{ print $2; }' | (
                         file=$(basename ${line})
                         mv ${root}/usr/bin/${file} ${root}/usr/bin/.slix-ld-${file}
                         ln -sr ${root}/usr/bin/slix-ld ${root}/usr/bin/${file}
-                        echo "1" > ${target}/requiresSlixLD.txt
+                        echo "1" > ${TMP}/${target}/requiresSlixLD.txt
                     fi
 
                 # patch shell scripts
@@ -150,8 +150,8 @@ ${packagemanager} -Ql ${archpkg} | awk '{ print $2; }' | (
         fi
     done
 )
-requiresSlixLD=$(cat ${target}/requiresSlixLD.txt)
-rm ${target}/requiresSlixLD.txt
+requiresSlixLD=$(cat ${TMP}/${target}/requiresSlixLD.txt)
+rm ${TMP}/${target}/requiresSlixLD.txt
 
 
 hasLdD=0

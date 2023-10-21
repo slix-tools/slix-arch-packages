@@ -13,18 +13,20 @@ fi
 
 if [ "${1:-}" == "--clean" ]; then
     shift;
-    rm -f allreadyBuild.txt
+    rm -f ${HOME}/.cache/allreadyBuild.txt
 fi
 
 name=${1}
 shift
+
+export TMP=/tmp
 
 
 if [ $# -gt 0 ]; then
     ./build.sh ${@}
 fi
 
-if [ -e "allreadyBuild.txt" ] && [ $(cat allreadyBuild.txt | grep "^${name}$" | wc -l) -gt 0 ]; then
+if [ -e "${HOME}/.cache/allreadyBuild.txt" ] && [ $(cat ${HOME}/.cache/allreadyBuild.txt | grep "^${name}$" | wc -l) -gt 0 ]; then
     exit 0
 fi
 yq -r '.[]
@@ -35,9 +37,9 @@ yq -r '.[]
             , "archpkg=" + if has("archpkg") then .archpkg else .name end
             , "defaultcmd=\"" + if has("defaultcmd") then .defaultcmd else "" end +"\""
         ] | join("\n")
-    ' packages.yaml > tmp.src
-source tmp.src
-rm tmp.src
+    ' packages.yaml > ${TMP}/tmp.src
+source ${TMP}/tmp.src
+rm ${TMP}/tmp.src
 if [ "${pkgname:-}" == "" ]; then
     echo "Error: unknown package \"${name}\""
     exit 1
@@ -59,8 +61,8 @@ description=$(${packagemanager} -Si "${archpkg}" | grep "Description" | cut -d '
 yq -r '.[]
         | select(.name == "'${name}'")
         | if has("extraSteps") then .extraSteps else "" end
-    ' packages.yaml > tmp_extraSteps.src
-. ./tmp_extraSteps.src
-rm tmp_extraSteps.src
+    ' packages.yaml > ${TMP}/tmp_extraSteps.src
+source ${TMP}/tmp_extraSteps.src
+rm ${TMP}/tmp_extraSteps.src
 
 ./finalizePackage.sh ${name} "${packagemanager}" ${archpkg} "${defaultcmd}" "${description}"

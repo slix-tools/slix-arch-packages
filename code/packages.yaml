@@ -78,7 +78,7 @@
 - name: fakeroot
   deps: [glibc, filesystem, sed, util-linux, bash]
   extraSteps: |
-    cp -a --remove-destination data/fakeroot/fakeroot ${name}/rootfs/usr/bin/fakeroot
+    cp -a --remove-destination data/fakeroot/fakeroot ${TMP}/${name}/rootfs/usr/bin/fakeroot
 - name: ffmpeg
   deps: [glibc, alsa-lib, aom, bzip2, fontconfig, fribidi, gmp, gnutls, gsm, jack2, lame, libass, libavc1394, libbluray, libbs2b, dav1d, libdrm, freetype2, libglvnd, libiec61883, libjxl, libmfx, libmodplug, libopenmpt, libpulse, rav1e, libraw1394, librsvg, libsoxr, libssh, libtheora, libva, libvdpau, vid.stab, libvorbis, libvpx, libwebp, libx11, x264, x265, libxcb, libxext, libxml2, libxv, xvidcore, zimg, ocl-icd, opencore-amr, openjpeg2, opus, sdl2, speex, srt, svt-av1, v4l-utils, vmaf, vulkan-icd-loader, xz, zlib]
 - name: file
@@ -91,7 +91,7 @@
   defaultcmd: firefox
   deps: [glibc, dbus-glib, ffmpeg, gtk3, libpulse, libxt, mailcap, nss, gnu-free-fonts, sed, bash, util-linux, coreutils]
   extraSteps: |
-    cp --remove-destination data/firefox/firefox ${name}/rootfs/usr/bin/firefox
+    cp --remove-destination data/firefox/firefox ${TMP}/${name}/rootfs/usr/bin/firefox
 - name: flac
   deps: [glibc, gcc-libs, libogg]
 - name: fmt
@@ -113,28 +113,28 @@
   archpkg: gcc
   deps: [glibc, gcc-libs, binutils, libmpc, zstd, libisl]
   extraSteps: |
-    cp -a --remove-destination data/gcc13/gcc ${name}/rootfs/usr/bin/gcc
-    cp -a --remove-destination data/gcc13/g++ ${name}/rootfs/usr/bin/g++
-    mv ${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/cc1     ${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/.slix-cc1
-    mv ${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/cc1plus ${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/.slix-cc1plus
-    cp -a --remove-destination data/gcc13/cc1     ${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/cc1
-    cp -a --remove-destination data/gcc13/cc1plus ${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/cc1plus
+    cp -a --remove-destination data/gcc13/gcc ${TMP}/${name}/rootfs/usr/bin/gcc
+    cp -a --remove-destination data/gcc13/g++ ${TMP}/${name}/rootfs/usr/bin/g++
+    mv ${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/cc1     ${TMP}/${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/.slix-cc1
+    mv ${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/cc1plus ${TMP}/${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/.slix-cc1plus
+    cp -a --remove-destination data/gcc13/cc1     ${TMP}/${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/cc1
+    cp -a --remove-destination data/gcc13/cc1plus ${TMP}/${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/cc1plus
 - name: gcc-libs
   deps: [glibc]
 - name: gcc12
   archpkg: gcc12
   deps: [glibc, gcc12-libs, binutils, libmpc, zstd, libisl]
   extraSteps: |
-    cp -a --remove-destination data/gcc12/gcc ${name}/rootfs/usr/bin/gcc
-    cp -a --remove-destination data/gcc12/g++ ${name}/rootfs/usr/bin/g++
+    cp -a --remove-destination data/gcc12/gcc ${TMP}/${name}/rootfs/usr/bin/gcc
+    cp -a --remove-destination data/gcc12/g++ ${TMP}/${name}/rootfs/usr/bin/g++
 - name: gcc12-libs
   deps: [glibc]
 - name: gcc11
   archpkg: gcc11
   deps: [glibc, gcc11-libs, binutils, libmpc, zstd]
   extraSteps: |
-    cp -a --remove-destination data/gcc11/gcc ${name}/rootfs/usr/bin/gcc
-    cp -a --remove-destination data/gcc11/g++ ${name}/rootfs/usr/bin/g++
+    cp -a --remove-destination data/gcc11/gcc ${TMP}/${name}/rootfs/usr/bin/gcc
+    cp -a --remove-destination data/gcc11/g++ ${TMP}/${name}/rootfs/usr/bin/g++
   packagemanager: yay
 - name: gcc11-libs
   deps: [glibc]
@@ -161,8 +161,8 @@
 - name: glibc
   deps: [slix-ld]
   extraSteps: |
-    rm -r ${name}/rootfs/etc
-    rm -r ${name}/rootfs/var
+    rm -r ${TMP}/${name}/rootfs/etc
+    rm -r ${TMP}/${name}/rootfs/var
 - name: glib-networking
   deps: [glib2, gnutls, gsettings-desktop-schemas, libproxy]
 - name: gmp
