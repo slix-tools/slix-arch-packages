@@ -23,9 +23,9 @@ if [ -z "${SLIX_INDEX}" ]; then
     exit 1;
 fi
 
-if [ -e "${HOME}/.cache/allreadyBuild.txt" ] && [ $(cat ${HOME}/.cache/allreadyBuild.txt | grep "^${name}$" | wc -l) -gt 0 ]; then
-    exit 0
-fi
+#if [ -e "${HOME}/.cache/allreadyBuild.txt" ] && [ $(cat ${HOME}/.cache/allreadyBuild.txt | grep "^${name}$" | wc -l) -gt 0 ]; then
+#    exit 0
+#fi
 
 # Build all dependencies
 for d in $deps; do

@@ -26,9 +26,6 @@ if [ $# -gt 0 ]; then
     ./build.sh ${@}
 fi
 
-if [ -e "${HOME}/.cache/allreadyBuild.txt" ] && [ $(cat ${HOME}/.cache/allreadyBuild.txt | grep "^${name}$" | wc -l) -gt 0 ]; then
-    exit 0
-fi
 yq -r '.[]
         | select(.name == "'${name}'")
         | [  "pkgname=" + .name
@@ -49,6 +46,12 @@ if [ "${packagemanager}" == "yay" ]; then
     packagemanager="sudo -u aur --preserve-env=MAKEFLAGS yay"
 fi
 
+archpkg_version=$(${packagemanager:-pacman} -Si "${archpkg}" | grep "Version" | cut -d ':' -f 2- | cut -b 2-)
+fullVersionName="${name} ${archpkg} ${archpkg_version}"
+if [ -e "${HOME}/.cache/allreadyBuild.txt" ] && [ $(cat ${HOME}/.cache/allreadyBuild.txt | grep "^${fullVersionName}$" | wc -l) -gt 0 ]; then
+    exit 0
+fi
+
 echo "installing/packaging: ${name}"
 if [ "${INSTALL_BEFORE_PACKAGING:-0}" -eq 1 ]; then
     ${packagemanager} -S --noconfirm --needed "${archpkg}"
@@ -66,3 +69,4 @@ source ${TMP}/tmp_extraSteps.src
 rm ${TMP}/tmp_extraSteps.src
 
 ./finalizePackage.sh ${name} "${packagemanager}" ${archpkg} "${defaultcmd}" "${description}"
+echo ${fullVersionName} >> ${HOME}/.cache/allreadyBuild.txt

@@ -24,9 +24,9 @@ if [ -z "${SLIX_INDEX}" ]; then
     exit 1;
 fi
 
-if [ -e "${HOME}/.cache/allreadyBuild.txt" ] && [ $(cat ${HOME}/.cache/allreadyBuild.txt | grep "^${name}$" | wc -l) -gt 0 ]; then
-    exit 0
-fi
+#if [ -e "${HOME}/.cache/allreadyBuild.txt" ] && [ $(cat ${HOME}/.cache/allreadyBuild.txt | grep "^${name}$" | wc -l) -gt 0 ]; then
+#    exit 0
+#fi
 
 version=$(${packagemanager} -Qi ${archpkg} \
     | grep -P "^Version" \
@@ -52,5 +52,4 @@ else
     rm ${TMP}/${target}.gar
 fi
 
-echo ${name} >> ${HOME}/.cache/allreadyBuild.txt
 rm -rf ${TMP}/${target}
