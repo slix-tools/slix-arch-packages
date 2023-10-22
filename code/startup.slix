@@ -1,4 +1,6 @@
 #!/usr/bin/env slix-env
+# SPDX-FileCopyrightText: 2023 S. G. Gottlieb <info.simon@gottliebtfreitag.de>
+# SPDX-License-Identifier: CC0-1.0
 
 bash@5.1.016-4#847341746c9a6fa96b43d98c2af701bf8e080a431917e0cdc7550ccab0fa4bdc
 binutils@2.41-3#7d68630824ca5d04255d9a68a353061e9961909b79fbd6a5200d3243597d045d
