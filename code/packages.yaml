@@ -536,6 +536,22 @@
   deps: [glibc, bzip2, expat, gdbm, libffi, libnsl, libxcrypt, openssl, zlib]
 - name: python-argcomplete
   deps: [python]
+- name: python-binaryornot
+  deps: [python, python-chardet]
+- name: python-boolean.py
+  deps: [python]
+- name: python-chardet
+  deps: [python]
+- name: python-debian
+  deps: [python, python-chardet, python-six]
+- name: python-jinja
+  deps: [python-markupsafe]
+- name: python-license-expression
+  deps: [python, python-boolean.py]
+- name: python-markupsafe
+  deps: [python]
+- name: python-six
+  deps: [python]
 - name: python-tomlkit
   deps: [python]
 - name: python-xmltodict
@@ -546,6 +562,8 @@
   deps: [gcc-libs, glibc]
 - name: readline
   deps: [glibc, ncurses]
+- name: reuse
+  deps: [python, python-debian, python-license-expression, python-boolean.py, python-jinja, python-binaryornot]
 - name: rhash
   deps: [glibc]
 - name: sdl2
