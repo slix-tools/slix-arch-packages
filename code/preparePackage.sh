@@ -98,12 +98,11 @@ ${packagemanager} -Ql ${archpkg} | awk '{ print $2; }' | (
                 # patch ld-linux.so.2 (interpreter of binaries)
                 if [ "${t}" == "application/x-executable" ] \
                      || [ "${t}" == "application/x-pie-executable" ]; then
-                    if [[ ${line} =~ ^/usr/bin/[^/]*$ ]]; then
-                        file=$(basename ${line})
-                        mv ${root}/usr/bin/${file} ${root}/usr/bin/.slix-ld-${file}
-                        ln -sr ${root}/usr/bin/slix-ld ${root}/usr/bin/${file}
-                        echo "1" > ${TMP}/${target}/requiresSlixLD.txt
-                    fi
+                    file="$(basename "${line}")"
+                    dir="$(dirname "${line}")"
+                    mv ${root}${dir}/${file} ${root}${dir}/.slix-ld-${file}
+                    ln -sr ${root}/usr/bin/slix-ld ${root}${dir}/${file}
+                    echo "1" > ${TMP}/${target}/requiresSlixLD.txt
 
                 # patch shell scripts
                 elif [ "${t}" == "text/x-shellscript" ] \
