@@ -44,6 +44,8 @@
 - name: cairo
   deps: [fontconfig, freetype2, glib2, libpng, libx11, libxcb, libxext, libxrender, lzo, pixman, zlib]
 - name: cantarell-fonts
+- name: ccache
+  deps: [glibc, gcc-libs, hiredis, zstd]
 - name: cmake
   deps: [curl, libarchive, hicolor-icon-theme, jsoncpp, libuv, rhash, make]
 - name: coreutils
@@ -204,6 +206,8 @@
   deps: [libusb, systemd-libs]
 - name: highway
   deps: [gcc-libs]
+- name: hiredis
+  deps: [glibc]
 - name: hunspell
   deps: [gcc-libs, readline]
 - name: hwdata
