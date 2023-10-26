@@ -16,7 +16,7 @@ slix -Sui /code/startup.slix
 
 # Starting an slix environment
 # !TODO grep is a hack
-eval "$(slix env /code/startup.slix --stack --allow_other --mount /slix-fs | grep -v "^add")"
+eval "$(slix env /code/startup.slix --stack --allow_other --mount /slix-fs)"
 
 # Starting bash in user space
 if [ "$1" == "--user" ]; then
