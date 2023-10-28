@@ -119,25 +119,11 @@
 - name: gcc12
   archpkg: gcc12
   deps: [glibc, gcc12-libs, binutils, libmpc, zstd, libisl]
-  extraSteps: |
-    cp -a --remove-destination data/gcc12/gcc ${TMP}/${name}/rootfs/usr/bin/gcc
-    cp -a --remove-destination data/gcc12/g++ ${TMP}/${name}/rootfs/usr/bin/g++
-    mv ${TMP}/${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/12.3.0/cc1     ${TMP}/${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/12.3.0/.slix-cc1
-    mv ${TMP}/${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/12.3.0/cc1plus ${TMP}/${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/12.3.0/.slix-cc1plus
-    cp -a --remove-destination data/gcc12/cc1     ${TMP}/${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/12.3.0/cc1
-    cp -a --remove-destination data/gcc12/cc1plus ${TMP}/${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/12.3.0/cc1plus
 - name: gcc12-libs
   deps: [glibc]
 - name: gcc11
   archpkg: gcc11
   deps: [glibc, gcc11-libs, binutils, libmpc, zstd]
-  extraSteps: |
-    cp -a --remove-destination data/gcc11/gcc ${TMP}/${name}/rootfs/usr/bin/gcc
-    cp -a --remove-destination data/gcc11/g++ ${TMP}/${name}/rootfs/usr/bin/g++
-    mv ${TMP}/${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/11.4.0/cc1     ${TMP}/${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/11.4.0/.slix-cc1
-    mv ${TMP}/${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/11.4.0/cc1plus ${TMP}/${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/11.4.0/.slix-cc1plus
-    cp -a --remove-destination data/gcc11/cc1     ${TMP}/${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/11.4.0/cc1
-    cp -a --remove-destination data/gcc11/cc1plus ${TMP}/${name}/rootfs/usr/lib/gcc/x86_64-pc-linux-gnu/11.4.0/cc1plus
   packagemanager: yay
 - name: gcc11-libs
   deps: [glibc]

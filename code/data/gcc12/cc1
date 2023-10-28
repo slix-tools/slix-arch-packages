@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-# SPDX-FileCopyrightText: 2023 S. G. Gottlieb <info.simon@gottliebtfreitag.de>
-# SPDX-License-Identifier: CC0-1.0
-
-ROOT_DIR="$(dirname "$(dirname "$(dirname "$(dirname "$(dirname "$(dirname "$(readlink -f "$0")")")")")")")"
-export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+"${LD_LIBRARY_PATH}:"}${ROOT_DIR}/usr/lib"
-${ROOT_DIR}/usr/lib/ld-linux-x86-64.so.2 --argv0 cc1 ${ROOT_DIR}/usr/lib/gcc/x86_64-pc-linux-gnu/12.3.0/.slix-cc1 "$@"
