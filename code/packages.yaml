@@ -11,7 +11,7 @@
 - name: alsa-topology-conf
 - name: alsa-ucm-conf
 - name: aom
-  deps: [glibc, gcc-libs]
+  deps: [glibc, gcc13-libs]
 - name: argon2
   deps: [glibc]
 - name: at-spi2-core
@@ -45,7 +45,7 @@
   deps: [fontconfig, freetype2, glib2, libpng, libx11, libxcb, libxext, libxrender, lzo, pixman, zlib]
 - name: cantarell-fonts
 - name: ccache
-  deps: [glibc, gcc-libs, hiredis, zstd]
+  deps: [glibc, gcc13-libs, hiredis, zstd]
 - name: cmake
   deps: [curl, libarchive, hicolor-icon-theme, jsoncpp, libuv, rhash, make]
 - name: coreutils
@@ -57,7 +57,7 @@
 - name: dav1d
   deps: [glibc]
 - name: db5.3
-  deps: [gcc-libs, bash]
+  deps: [gcc13-libs, bash]
 - name: dbus-glib
   deps: [glibc, dbus, glib2]
 - name: dbus
@@ -95,9 +95,9 @@
   extraSteps: |
     cp --remove-destination data/firefox/firefox ${TMP}/${name}/rootfs/usr/bin/firefox
 - name: flac
-  deps: [glibc, gcc-libs, libogg]
+  deps: [glibc, gcc13-libs, libogg]
 - name: fmt
-  deps: [gcc-libs]
+  deps: [gcc13-libs]
 - name: fontconfig
   deps: [expat, freetype2]
 - name: freetype2
@@ -113,8 +113,8 @@
   deps: [bash, glibc, mpfr]
 - name: gcc13
   archpkg: gcc
-  deps: [glibc, gcc-libs, binutils, libmpc, zstd, libisl]
-- name: gcc-libs
+  deps: [glibc, gcc13-libs, binutils, libmpc, zstd, libisl]
+- name: gcc13-libs
   deps: [glibc]
 - name: gcc12
   archpkg: gcc12
@@ -129,17 +129,17 @@
   deps: [glibc]
   packagemanager: yay
 - name: gc
-  deps: [glibc, gcc-libs]
+  deps: [glibc, gcc13-libs]
 - name: gdb-common
   deps: [glibc, python, guile]
 - name: gdbm
   deps: [glibc, bash, readline]
 - name: gdb
-  deps: [glibc, ncurses, gcc-libs, expat, xz, mpfr, source-highlight, gdb-common, readline, guile, python, libelf]
+  deps: [glibc, ncurses, gcc13-libs, expat, xz, mpfr, source-highlight, gdb-common, readline, guile, python, libelf]
 - name: gdk-pixbuf2
   deps: [glibc, glib2, libpng, libtiff, libjpeg-turbo, shared-mime-info]
 - name: gettext
-  deps: [gcc-libs, acl, bash, libunistring, libxml2]
+  deps: [gcc13-libs, acl, bash, libunistring, libxml2]
 - name: giflib
   deps: [glibc]
 - name: git
@@ -155,12 +155,12 @@
 - name: glib-networking
   deps: [glib2, gnutls, gsettings-desktop-schemas, libproxy]
 - name: gmp
-  deps: [gcc-libs, bash]
+  deps: [gcc13-libs, bash]
 - name: gnu-free-fonts
 - name: gnupg
   deps: [bzip2, glibc, gnutls, libgcrypt, libgpg-error, libksba, libassuan, npth, pinentry, readline, sqlite, zlib]
 - name: gnutls
-  deps: [glibc, gcc-libs, libtasn1, readline, zlib, nettle, p11-kit, libidn2, zstd, libunistring, brotli]
+  deps: [glibc, gcc13-libs, libtasn1, readline, zlib, nettle, p11-kit, libidn2, zstd, libunistring, brotli]
 - name: go
 - name: gperftools
   deps: [perl, libunwind]
@@ -169,7 +169,7 @@
 - name: gpm
   deps: [glibc, bash, procps-ng]
 - name: graphite
-  deps: [glibc, gcc-libs]
+  deps: [glibc, gcc13-libs]
 - name: grep
   deps: [glibc, pcre2]
 - name: gsettings-desktop-schemas
@@ -191,26 +191,26 @@
 - name: hidapi
   deps: [libusb, systemd-libs]
 - name: highway
-  deps: [gcc-libs]
+  deps: [gcc13-libs]
 - name: hiredis
   deps: [glibc]
 - name: hunspell
-  deps: [gcc-libs, readline]
+  deps: [gcc13-libs, readline]
 - name: hwdata
 - name: iana-etc
 - name: icu
-  deps: [glibc, gcc-libs, bash]
+  deps: [glibc, gcc13-libs, bash]
 - name: imath
-  deps: [gcc-libs]
+  deps: [gcc13-libs]
 - name: iptables
   deps: [glibc, libnftnl, libpcap, libnfnetlink, libnetfilter_conntrack, bash]
 - name: iso-codes
 - name: jack2
-  deps: [glibc, alsa-lib, db5.3, dbus, gcc-libs, glibc, libsamplerate, opus, systemd-libs]
+  deps: [glibc, alsa-lib, db5.3, dbus, gcc13-libs, glibc, libsamplerate, opus, systemd-libs]
 - name: jansson
   deps: [glibc]
 - name: jsoncpp
-  deps: [glibc, gcc-libs]
+  deps: [glibc, gcc13-libs]
 - name: json-c
   deps: [glibc]
 - name: json-glib
@@ -242,13 +242,13 @@
 - name: libbluray
   deps: [glibc, fontconfig, freetype2, libxml2]
 - name: libbs2b
-  deps: [glibc, libsndfile, gcc-libs]
+  deps: [glibc, libsndfile, gcc13-libs]
 - name: libcanberra
   deps: [libvorbis, libtool, alsa-lib, libpulse, tdb, sound-theme-freedesktop]
 - name: libcap-ng
   deps: [glibc]
 - name: libcap
-  deps: [gcc-libs, glibc, pam]
+  deps: [gcc13-libs, glibc, pam]
 - name: libcloudproviders
   deps: [glib2]
 - name: libcolord
@@ -263,7 +263,7 @@
 - name: libedit
   deps: [glibc, ncurses]
 - name: libelf
-  deps: [bzip2, curl, gcc-libs, glibc, xz, zlib, zstd]
+  deps: [bzip2, curl, gcc13-libs, glibc, xz, zlib, zstd]
 - name: libepoxy
   deps: [glibc, libglvnd, libx11]
 - name: libevent
@@ -293,11 +293,11 @@
 - name: libldap
   deps: [libsasl]
 - name: libmfx
-  deps: [gcc-libs]
+  deps: [gcc13-libs]
 - name: libmnl
   deps: [glibc]
 - name: libmodplug
-  deps: [gcc-libs]
+  deps: [gcc13-libs]
 - name: libmpc
   deps: [mpfr]
 - name: libnetfilter_conntrack
@@ -309,7 +309,7 @@
 - name: libnghttp2
   deps: [glibc]
 - name: libnl
-  deps: [glibc, gcc-libs]
+  deps: [glibc, gcc13-libs]
 - name: libnsl
   deps: [glibc, libtirpc]
 - name: libogg
@@ -317,7 +317,7 @@
 - name: libomxil-bellagio
   deps: [glibc]
 - name: libopenmpt
-  deps: [flac, gcc-libs, glibc, libogg, libpulse, libsndfile, libvorbis, mpg123, portaudio, zlib]
+  deps: [flac, gcc13-libs, glibc, libogg, libpulse, libsndfile, libvorbis, mpg123, portaudio, zlib]
 - name: libp11-kit
   deps: [glibc, libtasn1, libffi]
 - name: libpcap
@@ -327,7 +327,7 @@
 - name: libpng
   deps: [glibc, zlib, bash]
 - name: libproxy
-  deps: [glibc, dbus, duktape, gcc-libs, glib2, zlib]
+  deps: [glibc, dbus, duktape, gcc13-libs, glib2, zlib]
 - name: libpsl
   deps: [glibc, libidn2, libunistring]
 - name: libpulse
@@ -350,7 +350,7 @@
 - name: libsoup3
   deps: [brotli, glib-networking, glib2, krb5, libnghttp2, libpsl, libsysprof-capture, sqlite]
 - name: libsoxr
-  deps: [gcc-libs]
+  deps: [gcc13-libs]
 - name: libssh2
   deps: [openssl, zlib]
 - name: libssh
@@ -389,7 +389,7 @@
 - name: libvorbis
   deps: [libogg]
 - name: libvpx
-  deps: [glibc, gcc-libs]
+  deps: [glibc, gcc13-libs]
 - name: libwebp
   deps: [glibc, giflib, libjpeg-turbo, libpng, libtiff]
 - name: libyaml
@@ -441,7 +441,7 @@
   deps: [libxext]
 - name: linux-api-headers
 - name: llvm-libs
-  deps: [gcc-libs, zlib, zstd, libffi, libedit, ncurses, libxml2]
+  deps: [gcc13-libs, zlib, zstd, libffi, libedit, ncurses, libxml2]
 - name: lm_sensors
   deps: [glibc]
 - name: l-smash
@@ -462,7 +462,7 @@
 - name: nano
   deps: [ncurses, file, bash]
 - name: ncurses
-  deps: [glibc, gcc-libs]
+  deps: [glibc, gcc13-libs]
 - name: nettle
   deps: [glibc, gmp]
 - name: npth
@@ -496,7 +496,7 @@
 - name: pcre2
   deps: [glibc, readline, zlib, bzip2, bash]
 - name: pcre
-  deps: [glibc, gcc-libs, readline, zlib, bzip2, bash]
+  deps: [glibc, gcc13-libs, readline, zlib, bzip2, bash]
 - name: perl-error
   deps: [perl]
 - name: perl-mailtools
@@ -512,7 +512,7 @@
 - name: popt
   deps: [glibc]
 - name: portaudio
-  deps: [gcc-libs, glibc, alsa-lib, jack2]
+  deps: [gcc13-libs, glibc, alsa-lib, jack2]
 - name: procps-ng
   deps: [glibc, ncurses, systemd-libs]
 - name: python
@@ -542,7 +542,7 @@
 - name: python-yaml
   deps: [python, glibc, libyaml]
 - name: rav1e
-  deps: [gcc-libs, glibc]
+  deps: [gcc13-libs, glibc]
 - name: readline
   deps: [glibc, ncurses]
 - name: reuse
@@ -561,9 +561,9 @@
   deps: [glibc, bash, boost-libs]
 - name: sound-theme-freedesktop
 - name: speexdsp
-  deps: [gcc-libs]
+  deps: [gcc13-libs]
 - name: speex
-  deps: [glibc, gcc-libs, libogg, speexdsp]
+  deps: [glibc, gcc13-libs, libogg, speexdsp]
 - name: sqlite
   deps: [glibc, readline, zlib]
 - name: srt
@@ -576,7 +576,7 @@
 - name: svt-av1
   deps: [glibc]
 - name: systemd-libs
-  deps: [glibc, gcc-libs, libcap, libgcrypt, lz4, xz, zstd]
+  deps: [glibc, gcc13-libs, libcap, libgcrypt, lz4, xz, zstd]
 - name: systemd
   deps: [glibc, acl, bash, cryptsetup, dbus, iptables, kbd, kmod, hwdata, libcap, libgcrypt, libxcrypt, systemd-libs, libidn2, lz4, pam, libelf, libseccomp, util-linux, xz, pcre2, audit, openssl]
 - name: tar
@@ -584,7 +584,7 @@
 - name: tdb
   deps: [glibc]
 - name: thunderbird
-  deps: [glibc, gtk3, mailcap, dbus, dbus-glib, alsa-lib, nss, hunspell, sqlite, gnu-free-fonts, libvpx, zlib, bzip2, botan2, libwebp, libevent, libjpeg-turbo, libffi, nspr, gcc-libs, libx11, libxrender, libxfixes, libxext, libxcomposite, libxdamage, pango, gdk-pixbuf2, freetype2, fontconfig, glib2, pixman, gnupg, json-c, libcanberra, ffmpeg, icu]
+  deps: [glibc, gtk3, mailcap, dbus, dbus-glib, alsa-lib, nss, hunspell, sqlite, gnu-free-fonts, libvpx, zlib, bzip2, botan2, libwebp, libevent, libjpeg-turbo, libffi, nspr, gcc13-libs, libx11, libxrender, libxfixes, libxext, libxcomposite, libxdamage, pango, gdk-pixbuf2, freetype2, fontconfig, glib2, pixman, gnupg, json-c, libcanberra, ffmpeg, icu]
 - name: tmux
   deps: [glibc, ncurses, libevent, libutempter, systemd-libs]
 - name: tracker3
@@ -596,15 +596,15 @@
 - name: util-linux
   deps: [glibc, pam, shadow, coreutils, systemd-libs, libcap-ng, libxcrypt, util-linux-libs, file, ncurses]
 - name: v4l-utils
-  deps: [glibc, hicolor-icon-theme, gcc-libs, libjpeg-turbo, systemd-libs, json-c]
+  deps: [glibc, hicolor-icon-theme, gcc13-libs, libjpeg-turbo, systemd-libs, json-c]
 - name: vid.stab
-  deps: [gcc-libs, glibc]
+  deps: [gcc13-libs, glibc]
 - name: vim-runtime
   deps: [glibc]
 - name: vim
   deps: [vim-runtime, gpm, acl, glibc, libgcrypt, zlib, perl]
 - name: vmaf
-  deps: [glibc, gcc-libs]
+  deps: [glibc, gcc13-libs]
 - name: vulkan-icd-loader
   deps: [glibc]
 - name: wayland
@@ -612,7 +612,7 @@
 - name: x264
   deps: [glibc, l-smash]
 - name: x265
-  deps: [glibc, gcc-libs]
+  deps: [glibc, gcc13-libs]
 - name: xcb-proto
 - name: xkeyboard-config
 - name: xorgproto
@@ -625,14 +625,14 @@
 - name: xz
   deps: [glibc, bash]
 - name: yaml-cpp
-  deps: [gcc-libs, glibc]
+  deps: [gcc13-libs, glibc]
 - name: yay
   deps: [pacman]
   packagemanager: yay
 - name: yq
   deps: [jq, python-argcomplete, python-tomlkit, python-xmltodict, python-yaml]
 - name: zimg
-  deps: [gcc-libs, glibc]
+  deps: [gcc13-libs, glibc]
 - name: zlib
   deps: [glibc]
 - name: zsh-completions
@@ -640,4 +640,4 @@
 - name: zsh
   deps: [glibc, pcre, gdbm]
 - name: zstd
-  deps: [glibc, gcc-libs, zlib, xz, lz4]
+  deps: [glibc, gcc13-libs, zlib, xz, lz4]
