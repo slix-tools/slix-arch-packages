@@ -15,7 +15,7 @@ slix -Sui /code/startup.slix
 
 
 # Starting an slix environment
-eval "$(slix env /code/startup.slix --stack --allow_other --mount /slix-fs)"
+eval "$(slix env /code/startup.slix --stack --mount /slix-fs --verbose -o -- -oallow_other )"
 
 # Starting bash in user space
 if [ "$1" == "--user" ]; then
