@@ -115,6 +115,7 @@
   archpkg: gcc
   deps: [glibc, gcc13-libs, binutils, libmpc, zstd, libisl]
 - name: gcc13-libs
+  archpkg: gcc-libs
   deps: [glibc]
 - name: gcc12
   archpkg: gcc12
