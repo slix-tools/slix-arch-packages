@@ -7,7 +7,7 @@ RUN pacman -Syu --noconfirm perl
 RUN perl -i -p -e 's/^NoExtract += +.*$//' /etc/pacman.conf
 # Reinstall all packages with all files
 RUN pacman -S --noconfirm $(pacman -Q | awk '{print $1}')
-RUN pacman -Sy --noconfirm sudo git
+RUN pacman -Sy --noconfirm sudo git patch
 RUN useradd -m aur && \
     passwd -d aur && \
     echo 'aur ALL=(ALL) ALL' > /etc/sudoers.d/aur
