@@ -211,7 +211,7 @@
 - name: jansson
   deps: [glibc]
 - name: indicators
-  deps: [cmake, python]
+  deps: [cmake, python, patch]
   packagemanager: yay
 - name: jsoncpp
   deps: [glibc, gcc13-libs]
@@ -497,6 +497,8 @@
   deps: [glibc]
 - name: pango
   deps: [glibc, cairo, fribidi, harfbuzz, libthai, libxft]
+- name: patch
+  deps: [glibc, attr]
 - name: pcre2
   deps: [glibc, readline, zlib, bzip2, bash]
 - name: pcre
