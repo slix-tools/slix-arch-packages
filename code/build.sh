@@ -61,15 +61,8 @@ description=$(${packagemanager} -Si "${archpkg}" | grep "Description" | cut -d '
 
 ./preparePackage.sh ${name} "${packagemanager}" ${archpkg} "${deps}"
 
-# Run 'extraSteps'section "deprecated"
-yq -r '.[]
-        | select(.name == "'${name}'")
-        | if has("extraSteps") then .extraSteps else "" end
-    ' packages.yaml > ${TMP}/tmp_extraSteps.src
-source ${TMP}/tmp_extraSteps.src
-rm ${TMP}/tmp_extraSteps.src
-
 # New way, run applyFixes.sh
+export ROOTFS=${TMP}/${name}/rootfs/
 if [ -e "data/${name}/applyFixes.sh" ]; then
     source ./data/${name}/applyFixes.sh
 fi

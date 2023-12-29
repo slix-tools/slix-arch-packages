@@ -79,8 +79,6 @@
   deps: [glibc]
 - name: fakeroot
   deps: [glibc, filesystem, sed, util-linux, bash]
-  extraSteps: |
-    cp -a --remove-destination data/fakeroot/fakeroot ${TMP}/${name}/rootfs/usr/bin/fakeroot
 - name: ffmpeg
   deps: [glibc, alsa-lib, aom, bzip2, fontconfig, fribidi, gmp, gnutls, gsm, jack2, lame, libass, libavc1394, libbluray, libbs2b, dav1d, libdrm, freetype2, libglvnd, libiec61883, libjxl, libmfx, libmodplug, libopenmpt, libpulse, rav1e, libraw1394, librsvg, libsoxr, libssh, libtheora, libva, libvdpau, vid.stab, libvorbis, libvpx, libwebp, libx11, x264, x265, libxcb, libxext, libxml2, libxv, xvidcore, zimg, ocl-icd, opencore-amr, openjpeg2, opus, sdl2, speex, srt, svt-av1, v4l-utils, vmaf, vulkan-icd-loader, xz, zlib]
 - name: file
@@ -92,8 +90,6 @@
 - name: firefox
   defaultcmd: firefox
   deps: [glibc, dbus-glib, ffmpeg, gtk3, libpulse, libxt, mailcap, nss, gnu-free-fonts, sed, bash, util-linux, coreutils]
-  extraSteps: |
-    cp --remove-destination data/firefox/firefox ${TMP}/${name}/rootfs/usr/bin/firefox
 - name: flac
   deps: [glibc, gcc13-libs, libogg]
 - name: fmt
@@ -150,9 +146,6 @@
   deps: [glibc, libffi, libsysprof-capture, pcre2, util-linux-libs, zlib]
 - name: glibc
   deps: [slix-ld]
-  extraSteps: |
-    rm -r ${TMP}/${name}/rootfs/etc
-    rm -r ${TMP}/${name}/rootfs/var
 - name: glib-networking
   deps: [glib2, gnutls, gsettings-desktop-schemas, libproxy]
 - name: gmp
