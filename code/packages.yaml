@@ -464,6 +464,7 @@
 - name: mpg123
   deps: [glibc, alsa-lib]
 - name: nano
+  defaultcmd: nano
   deps: [ncurses, file, bash]
 - name: ncurses
   deps: [glibc, gcc13-libs]
@@ -608,6 +609,7 @@
 - name: vim-runtime
   deps: [glibc]
 - name: vim
+  defaultcmd: vim
   deps: [vim-runtime, gpm, acl, glibc, libgcrypt, zlib, perl]
 - name: vmaf
   deps: [glibc, gcc13-libs]
